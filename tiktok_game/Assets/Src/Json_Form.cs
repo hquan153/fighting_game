@@ -5,4 +5,5 @@ public class Json_Form
 {
     public int id;
     public int count;
+    public int diamondCount;
 }

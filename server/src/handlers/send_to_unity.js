@@ -1,12 +1,12 @@
 const app = require("../index");
 
-const sendToUnity = ({ id, count }) => {
+const sendToUnity = (giftInfo) => {
   const unityClient = app?.locals?.unityClient;
 
   if (!unityClient || unityClient.readyState !== WebSocket.OPEN) return;
-  unityClient.send(JSON.stringify({ id, count }));
+  unityClient.send(JSON.stringify({ ...giftInfo }));
 
-  console.log(`[Sent to Unity]: ${id} x${count}`);
+  console.log(`[Sent to Unity]: ${giftInfo.id} x${giftInfo.count}, ${giftInfo.diamondCount} diamonds`);
 };
 
 module.exports = sendToUnity;

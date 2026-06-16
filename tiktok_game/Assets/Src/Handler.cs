@@ -1,20 +1,38 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Handler : MonoBehaviour
 {
-    [SerializeField] private MonoBehaviour ronaldoScript;
-    [SerializeField] private MonoBehaviour messiScript;
+    [SerializeField] private GameObject ronaldoObject;
+    [SerializeField] private GameObject messiObject;
 
-    //[SerializeField] private Json_Form jsonForm;
+    private Sound soundObject;
 
-    void Start()
+    private Player ronaldoScript;
+    private Player messiScript;
+
+    private void Start()
     {
+        soundObject = GameObject.FindGameObjectWithTag("Sound").GetComponent<Sound>();
 
+        ronaldoScript = ronaldoObject.GetComponent<Player>();
+        messiScript = messiObject.GetComponent<Player>();
     }
 
-    void Update()
+    private void Update()
     {
-
+        if (Keyboard.current?.aKey.wasPressedThisFrame == true)
+        {
+            ronaldoScript.Attack();
+            messiScript.Damaged(0.1f);
+            soundObject.PlayBonk();
+        }
+        else if (Keyboard.current?.dKey.wasPressedThisFrame == true)
+        {
+            messiScript.Attack();
+            ronaldoScript.Damaged(0.1f);
+            soundObject.PlayBonk();
+        }
     }
 
     public void HandleMessage(string message)
