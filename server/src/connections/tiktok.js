@@ -22,13 +22,13 @@ tiktokConnection
     console.error("Failed to connect", err);
   });
 
-process.stdin.on("keypress", (str, key) => {
+/* process.stdin.on("keypress", (str, key) => {
   console.log(key.name);
   if (key.name === "r") {
     tiktokConnection.emit({ id: 5655, count: 1, diamondCount: 1 });
   } else if (key.name === "q") {
     process.exit();
   }
-});
+}); */
 
 module.exports = tiktokConnection;

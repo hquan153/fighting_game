@@ -1,19 +1,21 @@
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.LowLevelPhysics2D.PhysicsLayers;
 
 public class Handler : MonoBehaviour
 {
     [SerializeField] private GameObject ronaldoObject;
     [SerializeField] private GameObject messiObject;
 
-    private Sound soundObject;
+    private Sound soundComponent;
 
     private Player ronaldoScript;
     private Player messiScript;
 
     private void Awake()
     {
-        soundObject = GameObject.FindGameObjectWithTag("Sound").GetComponent<Sound>();
+        soundComponent = GameObject.FindGameObjectWithTag("Sound").GetComponent<Sound>();
 
         ronaldoScript = ronaldoObject.GetComponent<Player>();
         messiScript = messiObject.GetComponent<Player>();
@@ -23,21 +25,39 @@ public class Handler : MonoBehaviour
     {
         if (Keyboard.current?.aKey.wasPressedThisFrame == true)
         {
-            ronaldoScript.Attack();
-            messiScript.Damaged(0.1f);
-            soundObject.PlayBonk();
+            PlayerAttack("Ronaldo");
         }
         else if (Keyboard.current?.dKey.wasPressedThisFrame == true)
         {
-            messiScript.Attack();
-            ronaldoScript.Damaged(0.1f);
-            soundObject.PlayBonk();
+            PlayerAttack("Messi");
         }
     }
 
-    public void HandleMessage(string message)
+    private void PlayerAttack(string playerName, bool isRandom = false)
     {
-        Json_Form test = JsonUtility.FromJson<Json_Form>(message);
-        Debug.Log(message + ", " + test.id);
+        if (playerName == "Ronaldo" && isRandom == false)
+        {
+            ronaldoScript.Attack();
+            messiScript.Damaged(0.1f);
+        }
+        else if (playerName == "Messi" && isRandom == false)
+        {
+            messiScript.Attack();
+            ronaldoScript.Damaged(0.1f);
+        }
+        else
+        {
+            float randomNumber = Random.Range(-1f, 1f);
+            if (randomNumber <= 0) PlayerAttack("Ronaldo");
+            else PlayerAttack("Messi");
+        }
+        soundComponent.PlayBonk();
+    }
+
+    public void HandleMessage(string messageJSON)
+    {
+        Json_Form message = JsonUtility.FromJson<Json_Form>(messageJSON);
+
+        PlayerAttack(message.attacker, message.isRandom);
     }
 }
