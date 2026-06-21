@@ -21,7 +21,7 @@ const giftConfig = [
   new Gift(4, 8913, "Gift 4", "Ronaldo", "Messi", 0.25, 0, 0, 10),
   new Gift(5, 5879, "Gift 5", "Ronaldo", "Messi", 0.4, 0, 0, 30),
   new Gift(6, 5585, "Gift 6", "Ronaldo", "Messi", 3, 0, 0, 100),
-  new Gift(7, 12356, "Gift 7", "Ronaldo", "Messi", 0, 0.15, 0.2, 9, true),
+  new Gift(7, 12356, "Gift 7", "Ronaldo", "Messi", 0, 0.15, 0.2, 9),
 
   // messi attacks ronaldo
   new Gift(8, 5760, "Gift 8", "Messi", "Ronaldo", 0.01, 0, 0, 1),
@@ -30,7 +30,7 @@ const giftConfig = [
   new Gift(11, 5853, "Gift 11", "Messi", "Ronaldo", 0.25, 0, 0, 10),
   new Gift(12, 5492, "Gift 12", "Messi", "Ronaldo", 0.4, 0, 0, 30),
   new Gift(13, 7264, "Gift 13", "Messi", "Ronaldo", 3, 0, 0, 100),
-  new Gift(14, 8243, "Gift 14", "Messi", "Ronaldo", 0, 0.15, 0.2, 9, true),
+  new Gift(14, 8243, "Gift 14", "Messi", "Ronaldo", 0, 0.15, 0.2, 9),
 
   // random
   new Gift(15, 9139, "Gift 15", "Random", "Random", 0, 0.01, 0.08, 2, true),

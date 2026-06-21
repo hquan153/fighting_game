@@ -25,31 +25,32 @@ public class Handler : MonoBehaviour
     {
         if (Keyboard.current?.aKey.wasPressedThisFrame == true)
         {
-            PlayerAttack("Ronaldo");
+            //PlayerAttack();
         }
         else if (Keyboard.current?.dKey.wasPressedThisFrame == true)
         {
-            PlayerAttack("Messi");
+            //PlayerAttack("Messi");
         }
     }
 
-    private void PlayerAttack(string playerName, bool isRandom = false)
+    private void PlayerAttack(Json_Form message)
     {
-        if (playerName == "Ronaldo" && isRandom == false)
+        if (message.attacker == "Ronaldo" && message.isRandom == false)
         {
             ronaldoScript.Attack();
-            messiScript.Damaged(0.1f);
+            messiScript.Damaged(message.damage != 0 ? message.damage : Random.Range(message.from, message.to));
         }
-        else if (playerName == "Messi" && isRandom == false)
+        else if (message.attacker == "Messi" && message.isRandom == false)
         {
             messiScript.Attack();
-            ronaldoScript.Damaged(0.1f);
+            ronaldoScript.Damaged(message.damage != 0 ? message.damage : Random.Range(message.from, message.to));
         }
         else
         {
             float randomNumber = Random.Range(-1f, 1f);
-            if (randomNumber <= 0) PlayerAttack("Ronaldo");
-            else PlayerAttack("Messi");
+            message.attacker = randomNumber <= 0 ? "Ronaldo" : "Messi";
+            message.target  = randomNumber <= 0 ? "Messi" : "Ronaldo";
+            PlayerAttack(message);
         }
         soundComponent.PlayBonk();
     }
@@ -57,7 +58,6 @@ public class Handler : MonoBehaviour
     public void HandleMessage(string messageJSON)
     {
         Json_Form message = JsonUtility.FromJson<Json_Form>(messageJSON);
-
-        PlayerAttack(message.attacker, message.isRandom);
+        PlayerAttack(message);
     }
 }
