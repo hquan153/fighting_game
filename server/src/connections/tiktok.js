@@ -21,7 +21,7 @@ tiktokConnection
   });
 
 process.stdin.on("keypress", (str, key) => {
-  if (key.name === "r") {
+  if (key.name === "a") {
     tiktokConnection.emit("gift", {
       order: 15,
       giftId: 9139,
@@ -33,8 +33,30 @@ process.stdin.on("keypress", (str, key) => {
       to: 0.08,
       diamondCount: 2,
     });
-  } else if (key.name === "q") {
-    process.exit();
+  } else if (key.name === "s") {
+    tiktokConnection.emit("gift", {
+      order: 1,
+      giftId: 5655,
+      name: "Gift 1",
+      attacker: "Ronaldo",
+      target: "Messi",
+      damage: 0.01,
+      from: 0,
+      to: 0,
+      diamondCount: 1,
+    });
+  } else if (key.name === "s") {
+    tiktokConnection.emit("gift", {
+      order: 8,
+      giftId: 5760,
+      name: "Gift 8",
+      attacker: "Messi",
+      target: "Ronaldo",
+      damage: 0.01,
+      from: 0,
+      to: 0,
+      diamondCount: 1,
+    });
   }
 });
 

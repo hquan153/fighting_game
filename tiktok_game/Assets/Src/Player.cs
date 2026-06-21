@@ -15,7 +15,8 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject enemyScoreGameObject;
     private TMP_Text enemyScoreComponent;
 
-    private readonly float attackTime = .15f;
+    public float attackTime = .2f;
+    public float restTime = .2f;
 
     private void Start()
     {

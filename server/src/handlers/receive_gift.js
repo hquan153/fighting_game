@@ -3,6 +3,7 @@ const { TikTokLiveConnection, WebcastEvent } = require("tiktok-live-connector");
 const tiktokConnection = require("../connections/tiktok");
 
 const sendToUnity = require("./send_to_unity");
+const randomAttacker = require("./random_attacker");
 
 const constants = require("../untils/constants");
 const giftConfig = require("../untils/gift_config");
@@ -11,19 +12,7 @@ const giftConfig = require("../untils/gift_config");
 const allId = giftConfig.map((gift) => gift.id);
 
 tiktokConnection.on(WebcastEvent.GIFT, (data) => {
-  // console.log(`${data.giftId}, ${data.giftDetails.giftName} x${data.repeatCount}`);
-  /* console.log(
-    `${data.user.uniqueId} sends ${data.giftId}, ${data.giftDetails.giftName} x${data.repeatCount}`,
-  ); */
-  // console.log(data);
-
-  /* const giftInfo = {
-    // userId: data.user.uniqueId,
-    giftId: data.giftId,
-    // giftName: data.giftDetails.giftName,
-    repeatCount: data.repeatCount,
-    diamondCount: data.giftDetails.diamondCount,
-  }; */
+  console.log(`${data.giftId}, ${data?.giftDetails?.giftName} x${data.repeatCount}`);
 
   const index = allId.indexOf(data.giftId);
   if (index === -1) {
@@ -31,6 +20,18 @@ tiktokConnection.on(WebcastEvent.GIFT, (data) => {
     return;
   }
 
-  const giftInfo = giftConfig[index];
+  const giftInfo = { ...giftConfig[index] };
+  if (giftInfo.attacker === "Random") {
+    for (let i = 0; i < data.repeatCount; i++) {
+      const playersRandom = randomAttacker();
+      giftInfo.attacker = playersRandom.attacker;
+      giftInfo.target = playersRandom.target;
+
+      sendToUnity({ ...giftInfo, count: 1 });
+    }
+    return;
+  }
+
   sendToUnity({ ...giftInfo, count: data.repeatCount });
+  // sendToUnity({ ...giftInfo, count: 2 });
 });

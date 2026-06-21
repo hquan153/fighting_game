@@ -36,3 +36,173 @@ const giftConfig = [
 ];
 
 module.exports = giftConfig;
+
+/* 
+[
+  {
+    order: 1,
+    id: 5655,
+    name: 'Gift 1',
+    attacker: 'Ronaldo',
+    target: 'Messi',
+    damage: 0.01,
+    from: 0,
+    to: 0,
+    diamondCount: 1
+  },
+  {
+    order: 2,
+    id: 6064,
+    name: 'Gift 2',
+    attacker: 'Ronaldo',
+    target: 'Messi',
+    damage: 0.01,
+    from: 0,
+    to: 0,
+    diamondCount: 1
+  },
+  {
+    order: 3,
+    id: 37,
+    name: 'Gift 3',
+    attacker: 'Ronaldo',
+    target: 'Messi',
+    damage: 0.1,
+    from: 0,
+    to: 0,
+    diamondCount: 5
+  },
+  {
+    order: 4,
+    id: 8913,
+    name: 'Gift 4',
+    attacker: 'Ronaldo',
+    target: 'Messi',
+    damage: 0.25,
+    from: 0,
+    to: 0,
+    diamondCount: 10
+  },
+  {
+    order: 5,
+    id: 5879,
+    name: 'Gift 5',
+    attacker: 'Ronaldo',
+    target: 'Messi',
+    damage: 0.4,
+    from: 0,
+    to: 0,
+    diamondCount: 30
+  },
+  {
+    order: 6,
+    id: 5585,
+    name: 'Gift 6',
+    attacker: 'Ronaldo',
+    target: 'Messi',
+    damage: 3,
+    from: 0,
+    to: 0,
+    diamondCount: 100
+  },
+  {
+    order: 7,
+    id: 12356,
+    name: 'Gift 7',
+    attacker: 'Ronaldo',
+    target: 'Messi',
+    damage: 0,
+    from: 0.15,
+    to: 0.2,
+    diamondCount: 9
+  },
+  
+  {
+    order: 8,
+    id: 5760,
+    name: 'Gift 8',
+    attacker: 'Messi',
+    target: 'Ronaldo',
+    damage: 0.01,
+    from: 0,
+    to: 0,
+    diamondCount: 1
+  },
+  {
+    order: 9,
+    id: 5269,
+    name: 'Gift 9',
+    attacker: 'Messi',
+    target: 'Ronaldo',
+    damage: 0.01,
+    from: 0,
+    to: 0,
+    diamondCount: 1
+  },
+  {
+    order: 10,
+    id: 5487,
+    name: 'Gift 10',
+    attacker: 'Messi',
+    target: 'Ronaldo',
+    damage: 0.1,
+    from: 0,
+    to: 0,
+    diamondCount: 5
+  },
+  {
+    order: 11,
+    id: 5853,
+    name: 'Gift 11',
+    attacker: 'Messi',
+    target: 'Ronaldo',
+    damage: 0.25,
+    from: 0,
+    to: 0,
+    diamondCount: 10
+  },
+  {
+    order: 12,
+    id: 5492,
+    name: 'Gift 12',
+    attacker: 'Messi',
+    target: 'Ronaldo',
+    damage: 0.4,
+    from: 0,
+    to: 0,
+    diamondCount: 30
+  },
+  {
+    order: 13,
+    id: 7264,
+    name: 'Gift 13',
+    attacker: 'Messi',
+    target: 'Ronaldo',
+    damage: 3,
+    from: 0,
+    to: 0,
+    diamondCount: 100
+  },
+  {
+    order: 14,
+    id: 8243,
+    name: 'Gift 14',
+    attacker: 'Messi',
+    target: 'Ronaldo',
+    damage: 0,
+    from: 0.15,
+    to: 0.2,
+    diamondCount: 9
+  },
+  {
+    order: 15,
+    id: 9139,
+    name: 'Gift 15',
+    attacker: 'Random',
+    target: 'Random',
+    damage: 0,
+    from: 0.01,
+    to: 0.08,
+    diamondCount: 2
+  }
+] */
