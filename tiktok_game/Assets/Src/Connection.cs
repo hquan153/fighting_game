@@ -9,9 +9,13 @@ public class Connection : MonoBehaviour
 
     private WebSocket ws;
 
+    private void Awake()
+    {
+        Application.runInBackground = true;
+    }
+
     async private void Start()
     {
-        //Application.runInBackground = true; // Recommended for WebGL
         handlerScript = GetComponent<Message_Handler>();
 
         settingObject = GameObject.FindGameObjectWithTag("Setting");

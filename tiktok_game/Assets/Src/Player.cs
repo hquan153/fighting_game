@@ -11,14 +11,15 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject hpBarOject;
     private Slider hpBar;
     private Image hpBarFill;
+    private TMP_Text currentHpTMP;
 
     [SerializeField] private GameObject enemyScoreGameObject;
     private TMP_Text enemyScoreComponent;
 
-    private static readonly float attackTime = .2f;
-    public float restTime = attackTime;
+    [SerializeField] private float attackTime = .2f;
+    public float restTime = .35f;
 
-    private void Start()
+    private void Awake()
     {
         restObject = transform.Find("Rest").gameObject;
         restDamagedObject = transform.Find("Rest Damaged").gameObject;
@@ -27,12 +28,18 @@ public class Player : MonoBehaviour
         hpBar = hpBarOject.GetComponent<Slider>();
         hpBar.value = 1;
         hpBarFill = hpBarOject.transform.Find("Fill").GetComponent<Image>();
+        currentHpTMP = hpBarOject.GetComponentInChildren<TMP_Text>();
 
         enemyScoreComponent = enemyScoreGameObject.GetComponent<TMP_Text>();
 
         restObject.SetActive(true);
         restDamagedObject.SetActive(false);
         attackObject.SetActive(false);
+    }
+
+    private void Start()
+    {
+        currentHpTMP.text = (hpBar.value * 100).ToString();
     }
 
     private void ChangeColorHpBar()
@@ -74,6 +81,7 @@ public class Player : MonoBehaviour
         //attackObject.SetActive(false);
 
         hpBar.value -= damage;
+        currentHpTMP.text = (hpBar.value * 100).ToString();
         Dead();
         ChangeColorHpBar();
 

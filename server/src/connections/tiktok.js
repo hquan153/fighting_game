@@ -11,53 +11,75 @@ if (process.stdin.isRawMode) {
   process.stdin.setRawMode(true);
 }
 
-tiktokConnection
+/* tiktokConnection
   .connect()
   .then((state) => {
     console.info(`Connected to roomId ${state.roomId}`);
   })
   .catch((err) => {
     console.error("Failed to connect", err);
-  });
+  }); */
 
 process.stdin.on("keypress", (str, key) => {
   if (key.name === "a") {
     tiktokConnection.emit("gift", {
-      order: 15,
-      giftId: 9139,
-      name: "Gift 15",
-      attacker: "Random",
-      target: "Random",
-      damage: 0,
-      from: 0.01,
-      to: 0.08,
-      diamondCount: 2,
+      order: 1,
+      giftDetails: { giftName: "GG" },
+      attacker: "Ronaldo",
+      target: "Messi",
+      damage: 0.01,
+      diamondCount: 1,
       test: true,
     });
   } else if (key.name === "s") {
     tiktokConnection.emit("gift", {
-      order: 1,
-      giftId: 5655,
-      name: "Gift 1",
+      order: 2,
+      giftDetails: { giftName: "Rosa" },
       attacker: "Ronaldo",
       target: "Messi",
-      damage: 0.01,
-      from: 0,
-      to: 0,
-      diamondCount: 1,
+      damage: 0.1,
+      diamondCount: 10,
       test: true,
     });
   } else if (key.name === "d") {
     tiktokConnection.emit("gift", {
-      order: 8,
-      giftId: 5760,
-      name: "Gift 8",
+      order: 3,
+      giftDetails: { giftName: "Confetti" },
+      name: "Confetti",
+      attacker: "Ronaldo",
+      target: "Messi",
+      damage: 5,
+      diamondCount: 100,
+      test: true,
+    });
+  } else if (key.name === "g") {
+    tiktokConnection.emit("gift", {
+      order: 4,
+      giftDetails: { giftName: "Rose" },
       attacker: "Messi",
       target: "Ronaldo",
       damage: 0.01,
-      from: 0,
-      to: 0,
       diamondCount: 1,
+      test: true,
+    });
+  } else if (key.name === "h") {
+    tiktokConnection.emit("gift", {
+      order: 5,
+      giftDetails: { giftName: "Lucky Pig" },
+      attacker: "Messi",
+      target: "Ronaldo",
+      damage: 0.1,
+      diamondCount: 10,
+      test: true,
+    });
+  } else if (key.name === "j") {
+    tiktokConnection.emit("gift", {
+      order: 6,
+      giftDetails: { giftName: "Mini Star" },
+      attacker: "Messi",
+      target: "Ronaldo",
+      damage: 5,
+      diamondCount: 100,
       test: true,
     });
   }
