@@ -31,20 +31,15 @@ public class Attack_Manager : MonoBehaviour
     {
         if (attackQueue.Count > 0 && !isAttacking)
         {
-            soundScript.PlayBonk();
-            
             Json_Form nextAttacker = attackQueue.Dequeue();
             StartCoroutine(ExecuteAttackRoutine(nextAttacker));
-        }
-        else
-        {
-            //soundScript.StopBonk();
         }
     }
 
     private IEnumerator ExecuteAttackRoutine(Json_Form message)
     {
         isAttacking = true;
+        soundScript.PlayBonk();
 
         if (message.attacker == "Ronaldo")
         {
@@ -60,6 +55,7 @@ public class Attack_Manager : MonoBehaviour
         yield return new WaitForSeconds(ronaldoScript.restTime);
 
         isAttacking = false;
+        soundScript.StopBonk();
     }
 
     public void AddAttackQueue(Json_Form message)

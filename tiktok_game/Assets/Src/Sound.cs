@@ -3,20 +3,20 @@ using UnityEngine;
 public class Sound : MonoBehaviour
 {
     private AudioSource audioSource;
-    //[SerializeField] private AudioClip bonk;
 
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        audioSource.enabled = false;
     }
 
     public void PlayBonk()
     {
-        audioSource.Play();
+        audioSource.enabled = true;
     }
 
     public void StopBonk()
     {
-        audioSource.Stop();
+        audioSource.enabled = false;
     }
 }
