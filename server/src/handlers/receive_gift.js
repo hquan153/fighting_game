@@ -32,5 +32,5 @@ tiktokConnection.on(WebcastEvent.GIFT, (data) => {
     return;
   }
 
-  sendToUnity({ ...giftInfo, count: data.test ? 2 : data.repeatCount });
+  sendToUnity({ ...giftInfo, count: data.test ? 1 : data.repeatCount });
 });

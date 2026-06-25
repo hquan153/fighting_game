@@ -10,7 +10,7 @@ public class Attack_Manager : MonoBehaviour
     private Player ronaldoScript;
     private Player messiScript;
 
-    private Sound soundScript;
+    private SoundEffect soundEffectScript;
 
     private readonly Queue<Json_Form> attackQueue = new Queue<Json_Form>();
 
@@ -24,7 +24,7 @@ public class Attack_Manager : MonoBehaviour
         ronaldoScript = ronaldoObject.GetComponent<Player>();
         messiScript = messiObject.GetComponent<Player>();
 
-        soundScript = GameObject.FindGameObjectWithTag("Sound").GetComponent<Sound>();
+        soundEffectScript = GameObject.FindGameObjectWithTag("Sound Effect").GetComponent<SoundEffect>();
     }
 
     private void Update()
@@ -39,7 +39,7 @@ public class Attack_Manager : MonoBehaviour
     private IEnumerator ExecuteAttackRoutine(Json_Form message)
     {
         isAttacking = true;
-        soundScript.PlayBonk();
+        soundEffectScript.PlayBonk();
 
         if (message.attacker == "Ronaldo")
         {
@@ -55,7 +55,7 @@ public class Attack_Manager : MonoBehaviour
         yield return new WaitForSeconds(ronaldoScript.restTime);
 
         isAttacking = false;
-        soundScript.StopBonk();
+        soundEffectScript.StopBonk();
     }
 
     public void AddAttackQueue(Json_Form message)
