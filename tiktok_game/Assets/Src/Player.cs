@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
         //restDamagedObject.SetActive(false);
         attackObject.SetActive(true);
 
-        Invoke("Rest", attackTime);
+        Invoke(nameof(Rest), attackTime);
     }
 
     public void Damaged(float damage)
@@ -87,6 +87,6 @@ public class Player : MonoBehaviour
         Dead();
         ChangeColorHpBar();
 
-        Invoke("Rest", attackTime);
+        Invoke(nameof(Rest), attackTime);
     }
 }

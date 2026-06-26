@@ -12,7 +12,7 @@ public class Attack_Manager : MonoBehaviour
 
     private SoundEffect soundEffectScript;
 
-    private readonly Queue<Json_Form> attackQueue = new Queue<Json_Form>();
+    private readonly Queue<Json_Form> attackQueue = new();
 
     private bool isAttacking = false;
 

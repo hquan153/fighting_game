@@ -16,7 +16,7 @@ public class Fan : MonoBehaviour
         imageComponent = transform.GetComponent<Image>();
         imageComponent.sprite = sprites[0];
 
-        InvokeRepeating("Cheer", isDelay ? cheerTime * 2 : cheerTime, cheerTime);
+        InvokeRepeating(nameof(Cheer), isDelay ? cheerTime * 2 : cheerTime, cheerTime);
     }
 
     private void Cheer()
