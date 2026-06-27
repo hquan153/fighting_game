@@ -4,36 +4,48 @@ using TMPro;
 
 public class Player : MonoBehaviour
 {
+    private string enemyName;
+
     private GameObject restObject;
     private GameObject restDamagedObject;
     private GameObject attackObject;
 
-    [SerializeField] private GameObject hpBarOject;
+    private GameObject hpBarOject;
     private Slider hpBar;
     private Image hpBarFill;
     private TMP_Text currentHpTMP;
 
-    [SerializeField] private GameObject enemyScoreObject;
+    private GameObject enemyScoreObject;
     private TMP_Text enemyScoreTMPComponent;
 
     private GameObject damagedPopupObject;
+    private TMP_Text damagedPopupTMP;
+
+    //private Sound_Effect soundEffectScript;
 
     [SerializeField] private float attackTime = .2f;
     public float restTime = .3f;
 
     private void Awake()
     {
+        enemyName = transform.name.Contains("Ronaldo") ? "Messi" : "Ronaldo";
+
         restObject = transform.Find("Rest").gameObject;
         restDamagedObject = transform.Find("Rest Damaged").gameObject;
         attackObject = transform.Find("Attack").gameObject;
 
+        hpBarOject = GameObject.FindGameObjectWithTag("Hp Bar Container").transform.Find($"{transform.name} Hp").gameObject;
         hpBar = hpBarOject.GetComponent<Slider>();
         hpBarFill = hpBarOject.transform.Find("Fill").GetComponent<Image>();
         currentHpTMP = hpBarOject.GetComponentInChildren<TMP_Text>();
 
+        enemyScoreObject = GameObject.FindGameObjectWithTag("Score Container").transform.Find($"{enemyName} Score").gameObject;
         enemyScoreTMPComponent = enemyScoreObject.GetComponent<TMP_Text>();
 
-        damagedPopupObject = GameObject.Find($"{transform.name} Damaged");
+        damagedPopupObject = GameObject.FindGameObjectWithTag("Damaged Popup Container").transform.Find($"{transform.name} Damaged").gameObject;
+        damagedPopupTMP = damagedPopupObject.GetComponent<TMP_Text>();
+     
+        //soundEffectScript = GameObject.FindGameObjectWithTag("Sound Effect").GetComponent<Sound_Effect>();
     }
 
     private void Start()
@@ -56,11 +68,6 @@ public class Player : MonoBehaviour
         else hpBarFill.color = Color.red;
     }
 
-    private void ShowDamagedPopup()
-    {
-        damagedPopupObject.SetActive(true);
-    }
-
     private void Dead()
     {
         if (hpBar.value <= 0)
@@ -76,6 +83,8 @@ public class Player : MonoBehaviour
         restObject.SetActive(true);
         restDamagedObject.SetActive(false);
         attackObject.SetActive(false);
+
+        //soundEffectScript.StopBonk();
     }
 
     public void Attack()
@@ -83,6 +92,9 @@ public class Player : MonoBehaviour
         restObject.SetActive(false);
         //restDamagedObject.SetActive(false);
         attackObject.SetActive(true);
+
+        //soundEffectScript.StopBonk();
+        //soundEffectScript.PlayBonk();
 
         Invoke(nameof(Rest), attackTime);
     }
@@ -96,7 +108,9 @@ public class Player : MonoBehaviour
         hpBar.value -= damage;
         currentHpTMP.text = Mathf.CeilToInt((hpBar.value * 100)).ToString();
 
-        ShowDamagedPopup();
+        damagedPopupObject.SetActive(true);
+        damagedPopupTMP.text = (damage * 100).ToString();
+
         Dead();
         ChangeColorHpBar();
 

@@ -13,17 +13,17 @@ public class Damaged_Popup : MonoBehaviour
         animationClipName = animator.runtimeAnimatorController.name;
     }
 
+    private void HideObject()
+    {
+        gameObject.SetActive(false);
+    }
+
     private void OnEnable()
     {
         animator.Play(animationClipName, 0, 0f);
 
         CancelInvoke(nameof(HideObject));
         Invoke(nameof(HideObject), lifeTime);
-    }
-
-    private void HideObject()
-    {
-        gameObject.SetActive(false);
     }
 
     private void OnDisable()

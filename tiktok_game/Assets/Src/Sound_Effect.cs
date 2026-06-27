@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SoundEffect : MonoBehaviour
+public class Sound_Effect : MonoBehaviour
 {
     private AudioSource audioSource;
 
@@ -12,11 +12,11 @@ public class SoundEffect : MonoBehaviour
 
     public void PlayBonk()
     {
-        //audioSource.enabled = true;
+        audioSource.enabled = true;
     }
 
     public void StopBonk()
     {
-        //audioSource.enabled = false;
+        audioSource.enabled = false;
     }
 }

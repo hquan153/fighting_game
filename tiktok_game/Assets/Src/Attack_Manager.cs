@@ -10,7 +10,7 @@ public class Attack_Manager : MonoBehaviour
     private Player ronaldoScript;
     private Player messiScript;
 
-    private SoundEffect soundEffectScript;
+    private Sound_Effect soundEffectScript;
 
     private readonly Queue<Json_Form> attackQueue = new();
 
@@ -24,7 +24,7 @@ public class Attack_Manager : MonoBehaviour
         ronaldoScript = ronaldoObject.GetComponent<Player>();
         messiScript = messiObject.GetComponent<Player>();
 
-        soundEffectScript = GameObject.FindGameObjectWithTag("Sound Effect").GetComponent<SoundEffect>();
+        soundEffectScript = GameObject.FindGameObjectWithTag("Sound Effect").GetComponent<Sound_Effect>();
     }
 
     private void Update()
@@ -39,6 +39,7 @@ public class Attack_Manager : MonoBehaviour
     private IEnumerator ExecuteAttackRoutine(Json_Form message)
     {
         isAttacking = true;
+        soundEffectScript.StopBonk();
         soundEffectScript.PlayBonk();
 
         if (message.attacker == "Ronaldo")
