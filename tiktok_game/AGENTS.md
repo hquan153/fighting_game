@@ -2,7 +2,7 @@
 - Project name: tiktok_game
 - Unity version: Unity 6000.5.1f1
 - Active game object:
-  - Name: Background Music
+  - Name: Particle System
   - Tag: Untagged
   - Layer: Default
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->

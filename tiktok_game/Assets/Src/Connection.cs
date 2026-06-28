@@ -9,7 +9,7 @@ public class Connection : MonoBehaviour
 
     private WebSocket ws;
 
-    private readonly string serverDomain = "wss://tiktok-game-rabq.onrender.com";
+    //private readonly string serverDomain = "wss://tiktok-game-rabq.onrender.com";
 
     private void Awake()
     {
