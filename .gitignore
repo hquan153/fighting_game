@@ -2,13 +2,13 @@ server/node_modules/
 server/.env
 *.log
 
-tiktok_game/Library/
-tiktok_game/Temp/
-tiktok_game/Obj/
-tiktok_game/Logs/
-tiktok_game/UserSettings/
-tiktok_game/ProfilerCaptures/
-tiktok_game/.vs/
+fighting_game/Library/
+fighting_game/Temp/
+fighting_game/Obj/
+fighting_game/Logs/
+fighting_game/UserSettings/
+fighting_game/ProfilerCaptures/
+fighting_game/.vs/
 
 *.csproj
 *.sln

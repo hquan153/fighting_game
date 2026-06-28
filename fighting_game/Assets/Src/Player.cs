@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     private string enemyName;
 
     private GameObject restObject;
+    private GameObject breathObject;
     private GameObject restDamagedObject;
     private GameObject attackObject;
 
@@ -31,6 +32,7 @@ public class Player : MonoBehaviour
         enemyName = transform.name.Contains("Ronaldo") ? "Messi" : "Ronaldo";
 
         restObject = transform.Find("Rest").gameObject;
+        breathObject = transform.Find("Breath").gameObject;
         restDamagedObject = transform.Find("Rest Damaged").gameObject;
         attackObject = transform.Find("Attack").gameObject;
 
@@ -59,6 +61,14 @@ public class Player : MonoBehaviour
         restObject.SetActive(true);
         restDamagedObject.SetActive(false);
         attackObject.SetActive(false);
+
+        InvokeRepeating(nameof(Breath), .5f, .5f);
+    }
+
+    private void Breath()
+    {
+        restObject.SetActive(!restObject.activeSelf);
+        breathObject.SetActive(!breathObject.activeSelf);
     }
 
     private void ChangeColorHpBar()
