@@ -14,6 +14,9 @@ public class Connection : MonoBehaviour
     private void Awake()
     {
         Application.runInBackground = true;
+        #if !UNITY_EDITOR
+            Screen.SetResolution(540, 960, false); 
+        #endif
 
         handlerScript = transform.GetComponent<MessageHandler>();
 
